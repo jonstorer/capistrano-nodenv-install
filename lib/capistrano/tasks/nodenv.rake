@@ -1,8 +1,7 @@
 namespace :nodenv do
   task :ensure do
     on roles(fetch(:nodenv_roles)) do
-      nodenv_node = fetch(:nodenv_node)
-      if nodenv_node.nil?
+      if fetch(:nodenv_node).nil?
         error "nodenv: nodenv_node is not set"
         exit 1
       end
