@@ -21,9 +21,9 @@ namespace :load do
   task :defaults do
     paths = { :system => '/usr/local/nodenv', :user => '$HOME/.nodenv' }
 
-    set :nodenv_type, fetch(:nodenv_type, :user)
-    set :nodenv_path, -> { fetch(:nodenv_custom_path, paths[fetch(:nodenv_type)]) }
     set :nodenv_roles, fetch(:nodenv_roles, :all)
+    set :nodenv_type, -> { fetch(:nodenv_type, :user) }
+    set :nodenv_path, -> { fetch(:nodenv_custom_path, paths[fetch(:nodenv_type)]) }
     set :nodenv_node_dir, -> { "#{fetch(:nodenv_path)}/versions/#{fetch(:nodenv_node)}" }
   end
 end
